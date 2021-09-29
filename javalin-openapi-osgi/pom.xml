@@ -7,12 +7,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>javalin-osgi</artifactId>
+    <artifactId>javalin-openapi-osgi</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>io.javalin</groupId>
-            <artifactId>javalin</artifactId>
+            <artifactId>javalin-openapi</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
@@ -64,9 +64,14 @@
                     <instructions>
                         <Bundle-SymbolicName>${bundle-symbolic-name}</Bundle-SymbolicName>
                         <Bundle-Description>Bundle: ${project.name}</Bundle-Description>
-                        <Bundle-Name>Javalin OSGi bundle</Bundle-Name>
+                        <Bundle-Name>Javalin OpenAPI OSGi bundle</Bundle-Name>
                         <Import-Package>
+                            org.intellij.lang.annotations;resolution:=optional,\
                             org.eclipse.jetty.util.component,\
+                            com.fasterxml.jackson.annotation;resolution:=optional,\
+                            com.fasterxml.jackson.databind.ser.std;resolution:=optional,\
+                            com.fasterxml.jackson.databind.module;resolution:=optional,\
+                            com.fasterxml.jackson.databind.node;resolution:=optional,\
                             com.fasterxml.jackson.databind;resolution:=optional,\
                             com.fasterxml.jackson.module.kotlin;resolution:=optional,\
                             com.github.mustachejava;resolution:=optional,\
@@ -83,7 +88,17 @@
                             io.micrometer.core.instrument.binder.http;resolution:=optional,\
                             io.micrometer.core.instrument.binder.jetty;resolution:=optional,\
                             io.micrometer.core.instrument.composite;resolution:=optional,\
+                            io.github.classgraph;resolution:=optional,\
                             io.swagger.util;resolution:=optional,\
+                            io.swagger.v3.core.converter;resolution:=optional,\
+                            io.swagger.v3.core.jackson.mixin;resolution:=optional,\
+                            io.swagger.v3.core.jackson;resolution:=optional,\
+                            io.swagger.v3.core.util;resolution:=optional,\
+                            io.swagger.v3.oas.models;resolution:=optional,\
+                            io.swagger.v3.oas.models.media;resolution:=optional,\
+                            io.swagger.v3.oas.models.parameters;resolution:=optional,\
+                            io.swagger.v3.oas.models.responses;resolution:=optional,\
+                            io.swagger.v3.oas.models.security;resolution:=optional,\
                             io.swagger.v3.parser;resolution:=optional,\
                             io.swagger.v3.parser.core.models;resolution:=optional,\
                             org.apache.velocity;resolution:=optional,\
